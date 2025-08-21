@@ -151,22 +151,43 @@
             color: #fff;
         }
         .contact-btn {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 12px 32px;
-            background: #232526;
-            color: #00e6e6;
-            border: none;
-            border-radius: 24px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
-            cursor: pointer;
+        display: inline-block;
+        margin-top: 24px;
+        padding: 12px 32px;
+        background: #232526;
+        color: #00e6e6;
+        border: none;
+        border-radius: 24px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.3s ease;
         }
+
+        .contact-btn::before {
+        content: "";
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(135deg, #00e6e6, #00ff99);
+        transition: all 0.4s ease;
+        z-index: 0;
+        }
+
+        .contact-btn:hover::before {
+        left: 0;
+        }
+
+        .contact-btn span {
+        position: relative;
+        z-index: 1;
+        }
+
         .contact-btn:hover {
-            background: #fff;
-            color: #232526;
+        color: #fff;
         }
         .navbar {
             position: fixed;
