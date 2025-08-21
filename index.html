@@ -60,7 +60,11 @@
             border: 1.5px solid #00e6e6;
             transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
             color: #f8f8f8;
-            position: relative;
+            position: relative; /* Ensure positioning context */
+            min-height: 260px;   /* Optional: adjust as needed for your content */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .project-card h3 {
             color: #fff;
@@ -75,18 +79,22 @@
             line-height: 1.6;
         }
         .project-card .live-link {
-            color: #fff;
+            color: #111;
             background: linear-gradient(90deg, #00e6e6 0%, #0072ff 100%);
             padding: 8px 22px;
             border-radius: 20px;
             font-weight: bold;
             text-decoration: none;
             box-shadow: 0 2px 12px #00e6e655;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
             font-size: 1rem;
             border: none;
             outline: none;
             display: inline-block;
+            position: absolute;
+            left: 22px;
+            bottom: 22px;
+            margin-top: auto;
         }
         .project-card .live-link:hover {
             background: linear-gradient(90deg, #0072ff 0%, #00e6e6 100%);
