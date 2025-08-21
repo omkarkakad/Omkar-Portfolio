@@ -682,6 +682,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             speed = 80; // faster when deleting
         } else {
             typingElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
             speed = 120;
         }
 
