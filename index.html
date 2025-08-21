@@ -354,6 +354,7 @@
         @keyframes blink {
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
+
         }
 
         /* Responsive */
@@ -680,7 +681,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             typingElement.textContent = currentRole.substring(0, charIndex--);
             speed = 80; // faster when deleting
         } else {
-            typingElement.textContent = currentRole.substring(0, charIndex++);
+            typingElement.textContent = currentRole.substring(0, charIndex + 1);
             speed = 120;
         }
 
