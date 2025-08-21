@@ -334,7 +334,7 @@
             font-family: "Montserrat", sans-serif;
             font-weight: 600;
             font-size: 1.5rem;
-            color: #222;
+            color: #fff;
             text-align: center;
             margin: 40px auto;
             line-height: 1.6;
@@ -665,7 +665,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             }
         });
 
-        const roles = ["Python", "Java", "JS MERN", "AI/ML"];
+        const roles = ["Python", "Java", "JS MERN", "AI/ML","Prompt Engineering"]
         const typingElement = document.querySelector(".typing");
 
         let roleIndex = 0;
@@ -685,11 +685,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
         }
 
         if (!isDeleting && charIndex === currentRole.length) {
-            speed = 1500; // wait before deleting
+            speed = 1800; // wait before deleting
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
+            speed = 500; // wait before typing next role
         }
 
         setTimeout(typeEffect, speed);
