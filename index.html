@@ -276,7 +276,64 @@
             color: #fff !important;
         }
 
-        /* Responsive Styles */
+        /* Mobile Navigation Styles */
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            background: #00e6e6;
+            color: #232526;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            box-shadow: 0 2px 16px #0003;
+            font-size: 2rem;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .mobile-navbar {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            z-index: 2000;
+            background: rgba(35,37,38,0.97);
+            border-radius: 24px;
+            padding: 18px 18px 10px 18px;
+            box-shadow: 0 2px 16px #0003;
+            flex-direction: column;
+            gap: 22px;
+            align-items: center;
+            animation: fadeInMobileNav 0.2s;
+        }
+        .mobile-navbar a {
+            color: #00e6e6;
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, background 0.2s;
+        }
+        .mobile-navbar a:hover {
+            color: #fff;
+            background: #00e6e6;
+        }
+        @keyframes fadeInMobileNav {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .navbar { display: none; }
+            .mobile-nav-toggle { display: flex; }
+        }
         @media (max-width: 900px) {
             .section {
                 max-width: 98vw;
@@ -377,12 +434,23 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar (desktop) -->
     <nav class="navbar">
         <a href="#home" title="Home"><i class="fas fa-home"></i></a>
         <a href="#projects" title="Projects"><i class="fas fa-briefcase"></i></a>
         <a href="#skills" title="Skills"><i class="fas fa-lightbulb"></i></a>
         <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+    </nav>
+    <!-- Mobile Navigation Toggle Button -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-navbar" id="mobileNavbar">
+        <a href="#home" title="Home" onclick="toggleMobileNav()"><i class="fas fa-home"></i></a>
+        <a href="#projects" title="Projects" onclick="toggleMobileNav()"><i class="fas fa-briefcase"></i></a>
+        <a href="#skills" title="Skills" onclick="toggleMobileNav()"><i class="fas fa-lightbulb"></i></a>
+        <a href="#contact" title="Contact" onclick="toggleMobileNav()"><i class="fas fa-envelope"></i></a>
     </nav>
     <header id="home">
         <img src="omkar.jpeg" alt="Omkar's Photo">
@@ -532,6 +600,30 @@ document.getElementById('contactForm').addEventListener('submit', async function
         messageDiv.textContent = "There was an error. Please try again later.";
     }
 });
-</script>
+        // Mobile nav toggle logic
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNavbar');
+            const btn = document.getElementById('mobileNavToggle');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                nav.style.display = 'flex';
+                btn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        }
+        document.getElementById('mobileNavToggle').addEventListener('click', toggleMobileNav);
+        // Optional: Hide nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mobileNavbar');
+            const btn = document.getElementById('mobileNavToggle');
+            if (window.innerWidth <= 600 && nav.style.display === 'flex') {
+                if (!nav.contains(e.target) && !btn.contains(e.target)) {
+                    nav.style.display = 'none';
+                    btn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
