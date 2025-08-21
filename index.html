@@ -55,13 +55,13 @@
         .project-card {
             background: linear-gradient(135deg, #232526 60%, #0f2027 100%);
             border-radius: 18px;
-            padding: 28px 22px 22px 22px;
+            padding: 28px 22px 60px 22px; /* Increased bottom padding for button space */
             box-shadow: 0 6px 32px rgba(0,0,0,0.25), 0 1.5px 0 #00e6e6 inset;
             border: 1.5px solid #00e6e6;
             transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
             color: #f8f8f8;
-            position: relative; /* Ensure positioning context */
-            min-height: 260px;   /* Optional: adjust as needed for your content */
+            position: relative;
+            min-height: 260px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -95,6 +95,11 @@
             left: 22px;
             bottom: 22px;
             margin-top: auto;
+            /* Prevent overlap on small cards */
+            max-width: calc(100% - 44px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .project-card .live-link:hover {
             background: linear-gradient(90deg, #0072ff 0%, #00e6e6 100%);
