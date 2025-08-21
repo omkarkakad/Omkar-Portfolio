@@ -333,45 +333,55 @@
         .tagline {
             font-family: "Montserrat", sans-serif;
             font-weight: 600;
+            font-size: 1.5rem;
             color: #222;
             text-align: center;
-            letter-spacing: 1px;
+            margin: 40px auto;
             line-height: 1.6;
-            margin: 20px auto;
-            padding: 10px 15px;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1.2s ease-out;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-/* Desktop view */
-        @media (min-width: 768px) {
-        .tagline {
-            font-size: 2rem; /* large and bold */
-            max-width: 900px;
-        }
-        }
-
-        /* Mobile view */
-        @media (max-width: 767px) {
-        .tagline {
-            font-size: 1.2rem; /* smaller and readable */
-            padding: 8px 12px;
-        }
+        .animated-text {
+            display: inline-block;
+            margin-left: 8px;
+            position: relative;
+            height: 1.6em; /* fixes height flicker */
+            overflow: hidden;
+            vertical-align: bottom;
+            color: #2575fc;
         }
 
-        /* Smooth fade animation */
-        @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+        .animated-text span {
+            display: block;
+            animation: rotateWords 8s linear infinite 0s;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Animation */
+        @keyframes rotateWords {
+            0% { transform: translateY(0%); }
+            20% { transform: translateY(0%); }
+            25% { transform: translateY(-100%); }
+            45% { transform: translateY(-100%); }
+            50% { transform: translateY(-200%); }
+            70% { transform: translateY(-200%); }
+            75% { transform: translateY(-300%); }
+            95% { transform: translateY(-300%); }
+            100% { transform: translateY(0%); }
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 1.2rem;
+            }
         }
+
+
+
+
+
         @media (max-width: 600px) {
             .navbar { display: none; }
             .mobile-nav-toggle { display: flex; }
@@ -497,7 +507,15 @@
     <header id="home">
         <img src="omkar.jpeg" alt="Omkar's Photo">
         <h1>Omkar Kakad</h1>
-        <p class="tagline">Full Stack Developer | Problem Solver | Tech Enthusiast</p>
+        <div class="tagline">
+        Full Stack Developer | Tech Enthusiast | 
+        <span class="animated-text">
+        <span>Python</span>
+        <span>Java</span>
+        <span>JS MERN</span>
+        <span>Django</span>
+        </span>
+        </div>
         <a href="#contact" class="contact-btn">Contact Form</a>
         <a href="Omkar_Kakad_Resume.pdf" class="contact-btn" download style="margin-left: 12px;">Download Resume</a>
     </header>
