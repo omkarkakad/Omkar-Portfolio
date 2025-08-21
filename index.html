@@ -345,7 +345,6 @@
 
         /* Cursor effect */
         .cursor {
-            content: '|';
             display: inline-block;
             width: 2px;
             background-color: #2575fc;
@@ -667,34 +666,48 @@ document.getElementById('contactForm').addEventListener('submit', async function
             }
         });
 
-        const roles = ["Python", "Java", "JS MERN", "AI/ML","Prompt Engineering"]
+        const roles = ["Python", "Java", "JS MERN", "Django", "Machine Learning"];
         const typingElement = document.querySelector(".typing");
-        const cursor = document.querySelector(".cursor");
 
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let speed = 120; // typing speed
+        let speed = 120;
+
+        // Typing sound
+        const typeSound = new Audio("water.mp3"); 
+        typeSound.volume = 0.2; // softer volume
+
+        function playSound() {
+        // Restart sound each time for quick clicks
+        typeSound.currentTime = 0;
+        typeSound.play();
+        }
 
         function typeEffect() {
         const currentRole = roles[roleIndex];
-        
+
         if (isDeleting) {
             typingElement.textContent = currentRole.substring(0, charIndex--);
-            speed = 80; // faster when deleting
+            speed = 80;
+            playSound();
         } else {
             typingElement.textContent = currentRole.substring(0, charIndex + 1);
             charIndex++;
             speed = 120;
+            playSound();
         }
 
+        // When word fully typed
         if (!isDeleting && charIndex === currentRole.length) {
-            speed = 1800; // wait before deleting
             isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
+            speed = 1500; // pause before deleting
+        } 
+        // When word fully deleted
+        else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
-            speed = 500; // wait before typing next role
+            speed = 500; // pause before typing next
         }
 
         setTimeout(typeEffect, speed);
