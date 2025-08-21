@@ -330,6 +330,48 @@
             from { opacity: 0; transform: translateY(30px);}
             to { opacity: 1; transform: translateY(0);}
         }
+        .tagline {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            color: #222;
+            text-align: center;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+/* Desktop view */
+        @media (min-width: 768px) {
+        .tagline {
+            font-size: 2rem; /* large and bold */
+            max-width: 900px;
+        }
+        }
+
+        /* Mobile view */
+        @media (max-width: 767px) {
+        .tagline {
+            font-size: 1.2rem; /* smaller and readable */
+            padding: 8px 12px;
+        }
+        }
+
+        /* Smooth fade animation */
+        @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
         @media (max-width: 600px) {
             .navbar { display: none; }
             .mobile-nav-toggle { display: flex; }
@@ -455,7 +497,7 @@
     <header id="home">
         <img src="omkar.jpeg" alt="Omkar's Photo">
         <h1>Omkar Kakad</h1>
-        <p>Full Stack Developer | Problem Solver | Tech Enthusiast</p>
+        <p class="tagline">Full Stack Developer | Problem Solver | Tech Enthusiast</p>
         <a href="#contact" class="contact-btn">Contact Form</a>
         <a href="Omkar_Kakad_Resume.pdf" class="contact-btn" download style="margin-left: 12px;">Download Resume</a>
     </header>
