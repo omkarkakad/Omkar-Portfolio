@@ -344,17 +344,17 @@
         }
 
         /* Cursor effect */
-        .typing::after {
-            content: '|';
-            animation: blink 0.8s infinite;
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #2575fc;
             margin-left: 2px;
-            color: #2575fc;
+            animation: blink 0.7s step-start infinite;
         }
 
+        /* Blink animation */
         @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-
+            50% { opacity: 0; }
         }
 
         /* Responsive */
@@ -668,6 +668,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
         const roles = ["Python", "Java", "JS MERN", "AI/ML","Prompt Engineering"]
         const typingElement = document.querySelector(".typing");
+        const cursor = document.querySelector(".cursor");
 
         let roleIndex = 0;
         let charIndex = 0;
